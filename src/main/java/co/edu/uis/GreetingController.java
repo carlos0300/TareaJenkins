@@ -13,8 +13,8 @@ import org.springframework.web.bind.annotation.RestController;
 //@RequestMapping("/demo")
 public class GreetingController {
 
-	private static ArrayList<String> usuario;
-	private static List<ArrayList<String>> usuarios = new ArrayList<>();
+	private static ArrayList<String> moto;
+	private static List<ArrayList<String>> motos = new ArrayList<>();
 
 	private static final String template_fr = "Salut, %s!";
 	private static final String template_es = "Hola, %s!";
@@ -24,13 +24,13 @@ public class GreetingController {
 
 	@GetMapping("/greeting")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		for(ArrayList<String> usuario: usuarios){
-			if (usuario.contains(name)) {
-				if (usuario.contains("EN")) {
+		for(ArrayList<String> moto: motos){
+			if (moto.contains(name)) {
+				if (moto.contains("EN")) {
 					return new Greeting(counter.incrementAndGet(), String.format(template_en, name));
-				} else if (usuario.contains("ES")) {
+				} else if (moto.contains("ES")) {
 					return new Greeting(counter.incrementAndGet(), String.format(template_es, name));
-				} else if (usuario.contains("FR")) {
+				} else if (moto.contains("FR")) {
 					return new Greeting(counter.incrementAndGet(), String.format(template_fr, name));
 				} else {
 					return new Greeting(counter.incrementAndGet(), String.format(template_en, name) + " I don't know your language");
@@ -42,15 +42,21 @@ public class GreetingController {
 
 	// aqui se crean las motos
 
-	@PostMapping("/register")
-	public void registrar(@RequestParam String name,
-						@RequestParam String lang){
+	@PostMapping("/addMoto")
+	public void registrar(@RequestParam String id,
+						@RequestParam String marca,
+						@RequestParam String nombre,
+						@RequestParam String year,
+						@RequestParam String color){
 
-		usuario = new ArrayList<String>();
+		moto = new ArrayList<String>();
 
-		usuario.add(name);
-		usuario.add(lang);
+		moto.add(id);
+		moto.add(marca);
+		moto.add(nombre);
+		moto.add(year);
+		moto.add(color);
 
-		usuarios.add(usuario);
+		motos.add(moto);
 	}
 }
