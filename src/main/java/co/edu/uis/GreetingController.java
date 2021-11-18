@@ -19,11 +19,52 @@ public class GreetingController {
 	
 
 	@GetMapping("/getMoto")
-	public List<ArrayList<String>> greeting(@RequestParam(value = "id", defaultValue = "all") String id) {
-			if (id.equals("all")) {
-				return motos;
+	public List<ArrayList<String>> greeting(@RequestParam(value = "id", defaultValue = "null") String id,
+											@RequestParam(value = "marca", defaultValue = "null") String marca,
+											@RequestParam(value = "nombre", defaultValue = "null") String nombre,
+											@RequestParam(value = "year", defaultValue = "null") String year,
+											@RequestParam(value = "color", defaultValue = "null") String color) {
+			if (!id.equals("null")) {
+				for(ArrayList<String> moto: motos){
+					if (moto.contains(id)) {
+						motos2.add(moto);
+					}
+				}
+				return motos2;
 			}
-			return null;
+			if (!marca.equals("null")) {
+				for(ArrayList<String> moto: motos){
+					if (moto.contains(marca)) {
+						motos2.add(moto);
+					}
+				}
+				return motos2;
+			}
+			if (!nombre.equals("null")) {
+				for(ArrayList<String> moto: motos){
+					if (moto.contains(nombre)) {
+						motos2.add(moto);
+					}
+				}
+				return motos2;
+			}
+			if (!year.equals("null")) {
+				for(ArrayList<String> moto: motos){
+					if (moto.contains(year)) {
+						motos2.add(moto);
+					}
+				}
+				return motos2;
+			}
+			if (!color.equals("null")) {
+				for(ArrayList<String> moto: motos){
+					if (moto.contains(color)) {
+						motos2.add(moto);
+					}
+				}
+				return motos2;
+			}
+			return motos;
 	}
 
 	// aqui se crean las motos
