@@ -46,7 +46,7 @@ public class GreetingController {
 		motos.add(moto);
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/editMoto")
 	public void actualizar(@RequestParam String id,
 	@RequestParam String marca,
 	@RequestParam String nombre,
@@ -66,4 +66,20 @@ public class GreetingController {
 
 	}
 
+	@PutMapping("/deleteMoto")
+	public void deletear(@RequestParam String id,
+	)
+	{
+		
+		for(ArrayList<String> moto: motos){
+			if (moto.contains(id)) {
+				moto.remove(0);
+				moto.remove(1);
+				moto.remove(2);
+				moto.remove(3);
+				moto.remove(4);
+			}
+			
+		}
+	}
 }
