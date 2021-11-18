@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class GreetingController {
 
 	private static ArrayList<String> usuario;
-	private static List<ArrayList<String>> usuarios = new ArrayList<>();
+	private static List<ArrayList<String>> usuarios1 = new ArrayList<>();
 
 	private static final String template_fr = "Salut, %s!";
 	private static final String template_es = "Hola, %s!";
@@ -24,7 +24,7 @@ public class GreetingController {
 
 	@GetMapping("/greeting")
 	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		for(ArrayList<String> usuario: usuarios){
+		for(ArrayList<String> usuario: usuarios1){
 			if (usuario.contains(name)) {
 				if (usuario.contains("EN")) {
 					return new Greeting(counter.incrementAndGet(), String.format(template_en, name));
@@ -51,6 +51,6 @@ public class GreetingController {
 		usuario.add(name);
 		usuario.add(lang);
 
-		usuarios.add(usuario);
+		usuarios1.add(usuario);
 	}
 }
