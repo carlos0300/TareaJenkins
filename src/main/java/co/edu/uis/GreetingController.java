@@ -16,29 +16,16 @@ public class GreetingController {
 
 	private static ArrayList<String> moto;
 	private static List<ArrayList<String>> motos = new ArrayList<>();
-
-	private static final String template_fr = "Salut, %s!";
-	private static final String template_es = "Hola, %s!";
-	private static final String template_en = "Hello, %s!";
-	private final AtomicLong counter = new AtomicLong();
 	
 
-	@GetMapping("/greeting")
-	public Greeting greeting(@RequestParam(value = "name", defaultValue = "World") String name) {
-		for(ArrayList<String> moto: motos){
-			if (moto.contains(name)) {
-				if (moto.contains("EN")) {
-					return new Greeting(counter.incrementAndGet(), String.format(template_en, name));
-				} else if (moto.contains("ES")) {
-					return new Greeting(counter.incrementAndGet(), String.format(template_es, name));
-				} else if (moto.contains("FR")) {
-					return new Greeting(counter.incrementAndGet(), String.format(template_fr, name));
-				} else {
-					return new Greeting(counter.incrementAndGet(), String.format(template_en, name) + " I don't know your language");
+	@GetMapping("/getMoto")
+	public Greeting greeting(@RequestParam(value = "id", defaultValue = "all") String id) {
+			if (id.equals("all")) {
+				for(ArrayList<String> moto: motos){
+					return new Greeting(moto.get(0),moto.get(1),moto.get(2),moto.get(3),moto.get(4));
 				}
 			}
-		}
-		return new Greeting(counter.incrementAndGet(), "You are not registered yet");
+			return null;
 	}
 
 	// aqui se crean las motos
@@ -71,10 +58,10 @@ public class GreetingController {
 		int i=0;
 		for(ArrayList<String> moto: motos){
 			if (moto.contains(id)) {
-				moto.set(i,marca);
-				moto.set(i,nombre);
-				moto.set(i,year);
-				moto.set(i,color);
+				moto.set(i=i+1,marca);
+				moto.set(i=i+1,nombre);
+				moto.set(i=i+1,year);
+				moto.set(i=i+1,color);
 			}
 			i=i+1;
 		}
