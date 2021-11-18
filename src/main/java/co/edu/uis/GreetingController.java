@@ -53,15 +53,15 @@ public class GreetingController {
 	@RequestParam String year,
 	@RequestParam String color)
 	{
-		int i=0;
+		
 		for(ArrayList<String> moto: motos){
 			if (moto.contains(id)) {
-				moto.set(i=i+1,marca);
-				moto.set(i=i+1,nombre);
-				moto.set(i=i+1,year);
-				moto.set(i=i+1,color);
+				moto.set(1,marca);
+				moto.set(2,nombre);
+				moto.set(3,year);
+				moto.set(4,color);
 			}
-			i=i+1;
+			
 		}
 
 	}
