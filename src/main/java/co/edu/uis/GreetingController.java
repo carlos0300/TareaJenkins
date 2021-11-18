@@ -2,7 +2,6 @@ package co.edu.uis;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.atomic.AtomicLong;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -16,14 +15,13 @@ public class GreetingController {
 
 	private static ArrayList<String> moto;
 	private static List<ArrayList<String>> motos = new ArrayList<>();
+	private static List<ArrayList<String>> motos2 = new ArrayList<>();
 	
 
 	@GetMapping("/getMoto")
-	public Greeting greeting(@RequestParam(value = "id", defaultValue = "all") String id) {
+	public List<ArrayList<String>> greeting(@RequestParam(value = "id", defaultValue = "all") String id) {
 			if (id.equals("all")) {
-				for(ArrayList<String> moto: motos){
-					return new Greeting(moto.get(0),moto.get(1),moto.get(2),moto.get(3),moto.get(4));
-				}
+				return motos;
 			}
 			return null;
 	}
@@ -48,24 +46,40 @@ public class GreetingController {
 		motos.add(moto);
 	}
 
-	@PutMapping("/update")
+	@PutMapping("/editMoto")
 	public void actualizar(@RequestParam String id,
 	@RequestParam String marca,
 	@RequestParam String nombre,
 	@RequestParam String year,
 	@RequestParam String color)
 	{
-		int i=0;
+		
 		for(ArrayList<String> moto: motos){
 			if (moto.contains(id)) {
-				moto.set(i=i+1,marca);
-				moto.set(i=i+1,nombre);
-				moto.set(i=i+1,year);
-				moto.set(i=i+1,color);
+				moto.set(1,marca);
+				moto.set(2,nombre);
+				moto.set(3,year);
+				moto.set(4,color);
 			}
-			i=i+1;
+			
 		}
 
 	}
 
+	@PutMapping("/deleteMoto")
+	public void deletear(@RequestParam String id,
+	)
+	{
+		
+		for(ArrayList<String> moto: motos){
+			if (moto.contains(id)) {
+				moto.remove(0);
+				moto.remove(1);
+				moto.remove(2);
+				moto.remove(3);
+				moto.remove(4);
+			}
+			
+		}
+	}
 }
