@@ -58,10 +58,10 @@ public class GreetingController {
 		int i=0;
 		for(ArrayList<String> moto: motos){
 			if (moto.contains(id)) {
-				moto.set(i,marca);
-				moto.set(i,nombre);
-				moto.set(i,year);
-				moto.set(i,color);
+				moto.set(i=i+1,marca);
+				moto.set(i=i+1,nombre);
+				moto.set(i=i+1,year);
+				moto.set(i=i+1,color);
 			}
 			i=i+1;
 		}
