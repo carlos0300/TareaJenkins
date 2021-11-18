@@ -2,19 +2,35 @@ package co.edu.uis;
 
 public class Greeting {
 
-	private final long id;
-	private final String content;
+	private final String id;
+	private final String marca;
+	private final String nombre;
+	private final String year;
+	private final String color;
 
-	public Greeting(long id, String content) {
+	public Greeting(String id, String marca, String nombre, String year, String color) {
 		this.id = id;
-		this.content = content;
+		this.marca = marca;
+		this.nombre = nombre;
+		this.year = year;
+		this.color = color;
+
 	}
 
-	public long getId() {
+	public String getId() {
 		return id;
 	}
 
-	public String getContent() {
-		return content;
+	public String getMarca() {
+		return marca;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public String getYear() {
+		return year;
+	}
+	public String getColor() {
+		return color;
 	}
 }
