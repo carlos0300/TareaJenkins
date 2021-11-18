@@ -40,6 +40,8 @@ public class GreetingController {
 		return new Greeting(counter.incrementAndGet(), "You are not registered yet");
 	}
 
+	// aqui se crean las motos
+
 	@PostMapping("/register")
 	public void registrar(@RequestParam String name,
 						@RequestParam String lang){
