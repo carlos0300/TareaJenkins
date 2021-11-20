@@ -18,16 +18,16 @@ public class GreetingController {
 	
 
 	@GetMapping("/getMoto")
-	public List<ArrayList<String>> greeting(@RequestParam(value = "id", defaultValue = "null") String id,
+	public ArrayList<Greeting> greeting(@RequestParam(value = "id", defaultValue = "null") String id,
 											@RequestParam(value = "marca", defaultValue = "null") String marca,
 											@RequestParam(value = "nombre", defaultValue = "null") String nombre,
 											@RequestParam(value = "year", defaultValue = "null") String year,
 											@RequestParam(value = "color", defaultValue = "null") String color) {
-	List<ArrayList<String>> motos2 = new ArrayList<>();
+	ArrayList<Greeting> motos2 = new ArrayList<>();
 			if (!id.equals("null")) {
 				for(ArrayList<String> moto: motos){
 					if (moto.contains(id)) {
-						motos2.add(moto);
+						motos2.add(new Greeting(moto.get(0), moto.get(1), moto.get(2), moto.get(3), moto.get(4)));
 					}
 				}
 				return motos2;
@@ -35,7 +35,7 @@ public class GreetingController {
 			if (!marca.equals("null")) {
 				for(ArrayList<String> moto: motos){
 					if (moto.contains(marca)) {
-						motos2.add(moto);
+						motos2.add(new Greeting(moto.get(0), moto.get(1), moto.get(2), moto.get(3), moto.get(4)));
 					}
 				}
 				return motos2;
@@ -43,7 +43,7 @@ public class GreetingController {
 			if (!nombre.equals("null")) {
 				for(ArrayList<String> moto: motos){
 					if (moto.contains(nombre)) {
-						motos2.add(moto);
+						motos2.add(new Greeting(moto.get(0), moto.get(1), moto.get(2), moto.get(3), moto.get(4)));
 					}
 				}
 				return motos2;
@@ -51,7 +51,7 @@ public class GreetingController {
 			if (!year.equals("null")) {
 				for(ArrayList<String> moto: motos){
 					if (moto.contains(year)) {
-						motos2.add(moto);
+						motos2.add(new Greeting(moto.get(0), moto.get(1), moto.get(2), moto.get(3), moto.get(4)));
 					}
 				}
 				return motos2;
@@ -59,12 +59,15 @@ public class GreetingController {
 			if (!color.equals("null")) {
 				for(ArrayList<String> moto: motos){
 					if (moto.contains(color)) {
-						motos2.add(moto);
+						motos2.add(new Greeting(moto.get(0), moto.get(1), moto.get(2), moto.get(3), moto.get(4)));
 					}
 				}
 				return motos2;
 			}
-			return motos;
+			for(ArrayList<String> moto: motos){
+				motos2.add(new Greeting(moto.get(0), moto.get(1), moto.get(2), moto.get(3), moto.get(4)));
+			}
+			return motos2;
 	}
 
 	// aqui se crean las motos
