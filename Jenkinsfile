@@ -8,7 +8,7 @@ pipeline {
 
     stages {
         
-        }
+        
         stage('cleanyackage') {
             steps {
                 // Get some code from a GitHub repository
