@@ -9,28 +9,21 @@ pipeline {
     stages {
         
         
-        stage('cleanyackage') {
+        stage('Run') {
             steps {
-                // Get some code from a GitHub repository
-                bat 'mvn  clean package'
+
+                bat 'mvn spring-boot:run'
+                echo 'Servidor Activo'
             }
         }
-         stage('clean') {
+         stage('getMoto Contructor') {
             steps {
-                // Get some code from a GitHub repository
-                bat 'mvn  clean'
-             }
-        }
-            
-          stage('package') {
-            steps {
-                // Get some code from a GitHub repository
-                bat 'mvn  package'
-             }
-        }
 
+                bat 'localhost:8081/getMoto?marca=Bajaj'
+                echo 'Petición Get con filtro por marca (Bajaj)'
+             }
+        }
                 
-
        
     }   
 }

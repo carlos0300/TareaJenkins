@@ -39,7 +39,7 @@ public class GreetingController {
 		motos.add(moto);
 		moto = new ArrayList<String>();
 
-		moto.add("04");		moto.add("BMW");		moto.add("GS 1200");		moto.add("2019");		moto.add("gris");
+		moto.add("04");		moto.add("Bajaj");		moto.add("Boxer ct 100");		moto.add("2019");		moto.add("gris");
 
 		motos.add(moto);
 	}
