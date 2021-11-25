@@ -12,7 +12,7 @@ pipeline {
         stage('Run') {
             steps {
 
-                bat 'mvn spring-boot:run'
+                //bat 'mvn spring-boot:run'
                 echo 'Servidor Activo'
             }
         }
