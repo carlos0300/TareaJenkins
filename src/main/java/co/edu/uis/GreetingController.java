@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+
+
 @RestController
 //@RequestMapping("/demo")
 public class GreetingController {
@@ -17,6 +19,30 @@ public class GreetingController {
 	private static ArrayList<String> moto;
 	private static List<ArrayList<String>> motos = new ArrayList<>();
 	private static ArrayList<Greeting> motos2;
+
+	public GreetingController(){
+		moto = new ArrayList<String>();
+
+		moto.add("01");		moto.add("Honda");		moto.add("Cb 110");		moto.add("2018");		moto.add("Azul");
+
+		motos.add(moto);
+
+		moto = new ArrayList<String>();
+
+		moto.add("02");		moto.add("Bajaj");		moto.add("Pulsar 150");		moto.add("2015");		moto.add("negra");
+
+		motos.add(moto);
+		moto = new ArrayList<String>();
+
+		moto.add("03");		moto.add("Suzuki");		moto.add("Gs 150");		moto.add("2020");		moto.add("roja");
+
+		motos.add(moto);
+		moto = new ArrayList<String>();
+
+		moto.add("04");		moto.add("BMW");		moto.add("GS 1200");		moto.add("2019");		moto.add("gris");
+
+		motos.add(moto);
+	}
 	
 
 	@GetMapping("/getMoto")
