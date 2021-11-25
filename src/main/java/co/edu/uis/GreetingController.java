@@ -6,6 +6,7 @@ import java.util.List;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,6 +16,7 @@ public class GreetingController {
 
 	private static ArrayList<String> moto;
 	private static List<ArrayList<String>> motos = new ArrayList<>();
+	private static ArrayList<Greeting> motos2;
 	
 
 	@GetMapping("/getMoto")
@@ -23,7 +25,7 @@ public class GreetingController {
 											@RequestParam(value = "nombre", defaultValue = "null") String nombre,
 											@RequestParam(value = "year", defaultValue = "null") String year,
 											@RequestParam(value = "color", defaultValue = "null") String color) {
-	ArrayList<Greeting> motos2 = new ArrayList<>();
+	motos2 = new ArrayList<>();
 			if (!id.equals("null")) {
 				for(ArrayList<String> moto: motos){
 					if (moto.contains(id)) {
@@ -110,18 +112,15 @@ public class GreetingController {
 
 	}
 
-	@PutMapping("/deleteMoto")
+	@DeleteMapping("/deleteMoto")
 	public void deletear(@RequestParam String id)
 	{
-		
-		for(ArrayList<String> moto: motos){
-			if (moto.contains(id)) {
-				moto.remove(0);
-				moto.remove(1);
-				moto.remove(2);
-				moto.remove(3);
-				moto.remove(4);
+		int i=0;
+		for(Greeting moto: motos2){
+			if (moto.getId().equals(id)) {
+				motos.remove(i);
 			}
+			i++;
 			
 		}
 	}
