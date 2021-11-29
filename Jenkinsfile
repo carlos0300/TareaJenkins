@@ -9,20 +9,15 @@ pipeline {
     stages {
         
         
-        stage('Run') {
+        stage('Test') {
             steps {
 
-                //bat 'mvn spring-boot:run'
-                echo 'Servidor Activo'
+                bat 'mvn test"
+                echo 'test de agregar, mostrar, editar, y eliminar completados'
             }
         }
-         stage('getMoto Contructor') {
-            steps {
-
-                bat 'localhost:8081/getMoto?marca=Bajaj'
-                echo 'Petición Get con filtro por marca (Bajaj)'
-             }
-        }
+        
+        
                 
        
     }   
